@@ -1,4 +1,84 @@
 <div class="page">
-  <h1>{{ vm.title }}</h1>
-  <p>Welcome to your AngularJS app. This is the home page.</p>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">Public Health Data</div>
+      <h1>{{ vm.title }}</h1>
+      <p class="hero-sub">{{ vm.subtitle }}</p>
+    </div>
+  </header>
+
+  <section class="stats-grid">
+    <div class="stat-card {{ stat.color }}" ng-repeat="stat in vm.keyStats">
+      <div class="stat-value">{{ stat.value }}</div>
+      <div class="stat-label">{{ stat.label }}</div>
+      <div class="stat-note">{{ stat.note }}</div>
+    </div>
+  </section>
+
+  <div class="content-columns">
+
+    <section class="card">
+      <h2>Prevalence by Race &amp; Ethnicity</h2>
+      <p class="section-note">Adult obesity rates among U.S. population groups</p>
+      <div class="bar-chart">
+        <div class="bar-row" ng-repeat="item in vm.demographics">
+          <div class="bar-label">{{ item.group }}</div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width: {{ vm.barWidth(item.rate) }}">
+              <span class="bar-value">{{ item.rate }}%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Prevalence by Age Group</h2>
+      <p class="section-note">Obesity rates across adult age brackets</p>
+      <div class="bar-chart">
+        <div class="bar-row" ng-repeat="item in vm.ageGroups">
+          <div class="bar-label">{{ item.group }}</div>
+          <div class="bar-track">
+            <div class="bar-fill bar-fill-alt" style="width: {{ vm.barWidth(item.rate) }}">
+              <span class="bar-value">{{ item.rate }}%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <h2>Highest Rates by State</h2>
+      <p class="section-note">Top states by adult obesity prevalence</p>
+      <div class="state-list">
+        <div class="state-row" ng-repeat="s in vm.topStates">
+          <span class="state-rank">{{ $index + 1 }}</span>
+          <span class="state-name">{{ s.state }}</span>
+          <span class="state-rate">{{ s.rate }}%</span>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <section class="card trend-card">
+    <h2>Obesity Trend Over Time</h2>
+    <p class="section-note">Adult obesity rate in the U.S., 2000–2020</p>
+    <div class="trend-chart">
+      <div class="trend-bar-wrap" ng-repeat="t in vm.trends">
+        <div class="trend-bar-outer">
+          <div class="trend-bar-inner" style="height: {{ vm.trendBarHeight(t.rate) }}">
+            <span class="trend-val">{{ t.rate }}%</span>
+          </div>
+        </div>
+        <div class="trend-year">{{ t.year }}</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="page-footer">
+    <p>{{ vm.source }}</p>
+  </footer>
+
 </div>
