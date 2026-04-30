@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AngularJS App</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular-route.min.js"></script>
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body>
+
+  <main>
+    <div ng-view></div>
+  </main>
+
+  <!-- App scripts -->
+  <script src="app/app.js"></script>
+  <script src="app/components/home.controller.js"></script>
+  <script src="app/components/about.controller.js"></script>
+  <script src="app/components/contact.controller.js"></script>
+
+</body>
+</html>
